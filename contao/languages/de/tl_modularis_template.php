@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-$GLOBALS['TL_LANG']['tl_snippet_template']['name'] = ['Name', 'Interner Name der Vorlage, erscheint in der Auswahl im Inhaltselement.'];
-$GLOBALS['TL_LANG']['tl_snippet_template']['alias'] = ['Alias', 'Eindeutiger Kurzname. Leer lassen, um ihn automatisch zu erzeugen.'];
-$GLOBALS['TL_LANG']['tl_snippet_template']['description'] = ['Beschreibung', 'Optionale Notiz für Redakteure.'];
-$GLOBALS['TL_LANG']['tl_snippet_template']['html'] = ['HTML-Snippet', 'Das HTML mit Platzhaltern in doppelten eckigen Klammern, z. B. [[text:headline|Überschrift]].'];
-$GLOBALS['TL_LANG']['tl_snippet_template']['imgSize'] = ['Bildgröße', 'Standard für alle Bild-Platzhalter (Typ image) dieser Vorlage, falls der Platzhalter keine eigene Größe angibt.'];
+$GLOBALS['TL_LANG']['tl_modularis_template']['name'] = ['Name', 'Interner Name der Vorlage, erscheint in der Auswahl im Inhaltselement.'];
+$GLOBALS['TL_LANG']['tl_modularis_template']['alias'] = ['Alias', 'Eindeutiger Kurzname. Leer lassen, um ihn automatisch zu erzeugen.'];
+$GLOBALS['TL_LANG']['tl_modularis_template']['description'] = ['Beschreibung', 'Optionale Notiz für Redakteure.'];
+$GLOBALS['TL_LANG']['tl_modularis_template']['html'] = ['HTML-Snippet', 'Das HTML mit Platzhaltern in doppelten eckigen Klammern, z. B. [[text:headline|Überschrift]].'];
+$GLOBALS['TL_LANG']['tl_modularis_template']['imgSize'] = ['Bildgröße', 'Standard für alle Bild-Platzhalter (Typ image) dieser Vorlage, falls der Platzhalter keine eigene Größe angibt.'];
 
-$GLOBALS['TL_LANG']['tl_snippet_template']['title_legend'] = 'Vorlage';
-$GLOBALS['TL_LANG']['tl_snippet_template']['snippet_legend'] = 'HTML-Snippet';
-$GLOBALS['TL_LANG']['tl_snippet_template']['image_legend'] = 'Bildeinstellungen';
+$GLOBALS['TL_LANG']['tl_modularis_template']['title_legend'] = 'Vorlage';
+$GLOBALS['TL_LANG']['tl_modularis_template']['snippet_legend'] = 'HTML-Snippet';
+$GLOBALS['TL_LANG']['tl_modularis_template']['image_legend'] = 'Bildeinstellungen';
 
-$GLOBALS['TL_LANG']['tl_snippet_template']['syntax'] = [
+$GLOBALS['TL_LANG']['tl_modularis_template']['syntax'] = [
     'title' => 'Platzhalter-Syntax',
     'structure' => [
         'title' => 'Aufbau',
@@ -46,4 +46,4 @@ $GLOBALS['TL_LANG']['tl_snippet_template']['syntax'] = [
     'note' => 'Namen bestehen aus Kleinbuchstaben, Ziffern und Unterstrich. Gängige Breitenklassen: w25, w33, w50, w66, w75, clr (erzwingt eine neue Zeile). Mehrere Klassen mit + verbinden, z. B. .w33+clr. Insert-Tags wie {{link_url::12}} funktionieren weiterhin. Derselbe Platzhalter darf mehrfach vorkommen und wird nur einmal abgefragt.',
 ];
 
-$GLOBALS['TL_LANG']['tl_snippet_template']['deleteBlocked'] = 'Die Vorlage "%s" wird noch von %d Inhaltselement(en) verwendet und kann nicht gelöscht werden.';
+$GLOBALS['TL_LANG']['tl_modularis_template']['deleteBlocked'] = 'Die Vorlage "%s" wird noch von %d Inhaltselement(en) verwendet und kann nicht gelöscht werden.';

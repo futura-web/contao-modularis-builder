@@ -7,7 +7,7 @@ use Contao\DataContainer;
 use Contao\DC_Table;
 use Contao\System;
 
-$GLOBALS['TL_DCA']['tl_snippet_template'] = [
+$GLOBALS['TL_DCA']['tl_modularis_template'] = [
     'config' => [
         'dataContainer' => DC_Table::class,
         'enableVersioning' => true,
@@ -45,7 +45,7 @@ $GLOBALS['TL_DCA']['tl_snippet_template'] = [
                 'href' => 'act=delete',
                 'icon' => 'delete.svg',
                 'attributes' => 'onclick="if(!confirm(\'' . ($GLOBALS['TL_LANG']['MSC']['deleteConfirm'] ?? '') . '\'))return false;Backend.getScrollOffset()"',
-                // button_callback wird im SnippetTemplateListener registriert
+                // button_callback wird im ModularisTemplateListener registriert
             ],
             'show',
         ],
@@ -99,7 +99,7 @@ $GLOBALS['TL_DCA']['tl_snippet_template'] = [
             'sql' => 'mediumtext NULL',
         ],
         'syntaxHelp' => [
-            // input_field_callback wird im SnippetTemplateListener registriert
+            // input_field_callback wird im ModularisTemplateListener registriert
         ],
         'imgSize' => [
             'exclude' => true,

@@ -1,5 +1,5 @@
 {
-    "name": "futura/contao-dynamic-snippets",
+    "name": "futura/contao-modularis-builder",
     "type": "contao-bundle",
     "description": "HTML-Snippets mit Platzhaltern als wiederverwendbare Inhaltselemente für Contao 5 – ohne eigene Modulprogrammierung",
     "keywords": [
@@ -19,7 +19,7 @@
         "cms",
         "image"
     ],
-    "homepage": "https://github.com/futura-web/contao-dynamic-snippets",
+    "homepage": "https://github.com/futura-web/contao-modularis-builder",
     "license": "LGPL-3.0-or-later",
     "authors": [
         {
@@ -28,8 +28,8 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/futura-web/contao-dynamic-snippets/issues",
-        "source": "https://github.com/futura-web/contao-dynamic-snippets"
+        "issues": "https://github.com/futura-web/contao-modularis-builder/issues",
+        "source": "https://github.com/futura-web/contao-modularis-builder"
     },
     "require": {
         "php": "^8.1",
@@ -44,11 +44,11 @@
     },
     "autoload": {
         "psr-4": {
-            "Futura\\ContaoDynamicSnippets\\": "src/"
+            "Futura\\ContaoModularisBuilder\\": "src/"
         }
     },
     "extra": {
-        "contao-manager-plugin": "Futura\\ContaoDynamicSnippets\\ContaoManager\\Plugin"
+        "contao-manager-plugin": "Futura\\ContaoModularisBuilder\\ContaoManager\\Plugin"
     },
     "config": {
         "allow-plugins": {

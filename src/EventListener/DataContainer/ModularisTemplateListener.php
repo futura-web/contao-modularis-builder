@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Futura\ContaoDynamicSnippets\EventListener\DataContainer;
+namespace Futura\ContaoModularisBuilder\EventListener\DataContainer;
 
 use Contao\CoreBundle\DependencyInjection\Attribute\AsCallback;
 use Contao\CoreBundle\Slug\Slug;
@@ -13,10 +13,10 @@ use Contao\Input;
 use Contao\Message;
 use Contao\StringUtil;
 use Doctrine\DBAL\Connection;
-use Futura\ContaoDynamicSnippets\Snippet\Placeholder;
-use Futura\ContaoDynamicSnippets\Snippet\SnippetParser;
+use Futura\ContaoModularisBuilder\Snippet\Placeholder;
+use Futura\ContaoModularisBuilder\Snippet\SnippetParser;
 
-class SnippetTemplateListener
+class ModularisTemplateListener
 {
     public function __construct(
         private readonly Connection $connection,
@@ -25,13 +25,13 @@ class SnippetTemplateListener
     ) {
     }
 
-    #[AsCallback('tl_snippet_template', 'fields.alias.save')]
+    #[AsCallback('tl_modularis_template', 'fields.alias.save')]
     public function generateAlias(mixed $value, DataContainer $dc): string
     {
         $value = (string) $value;
 
         $aliasExists = fn (string $alias): bool => false !== $this->connection->fetchOne(
-            'SELECT id FROM tl_snippet_template WHERE alias = ? AND id != ?',
+            'SELECT id FROM tl_modularis_template WHERE alias = ? AND id != ?',
             [$alias, (int) $dc->id],
         );
 
@@ -52,7 +52,7 @@ class SnippetTemplateListener
         return $value;
     }
 
-    #[AsCallback('tl_snippet_template', 'list.label.label')]
+    #[AsCallback('tl_modularis_template', 'list.label.label')]
     public function formatLabel(array $row, string $label, DataContainer $dc, array $args): string
     {
         $placeholders = $this->parser->parse((string) $row['html']);
@@ -75,7 +75,7 @@ class SnippetTemplateListener
         return $out;
     }
 
-    #[AsCallback('tl_snippet_template', 'list.operations.delete.button')]
+    #[AsCallback('tl_modularis_template', 'list.operations.delete.button')]
     public function deleteButton(array $row, string|null $href, string $label, string $title, string|null $icon, string $attributes): string
     {
         if ($this->countUsages((int) $row['id']) > 0) {
@@ -91,7 +91,7 @@ class SnippetTemplateListener
         );
     }
 
-    #[AsCallback('tl_snippet_template', 'config.ondelete')]
+    #[AsCallback('tl_modularis_template', 'config.ondelete')]
     public function preventDeleteIfUsed(DataContainer $dc): void
     {
         $id = (int) $dc->id;
@@ -101,9 +101,9 @@ class SnippetTemplateListener
             return;
         }
 
-        $name = (string) $this->connection->fetchOne('SELECT name FROM tl_snippet_template WHERE id = ?', [$id]);
+        $name = (string) $this->connection->fetchOne('SELECT name FROM tl_modularis_template WHERE id = ?', [$id]);
 
-        Message::addError(sprintf($GLOBALS['TL_LANG']['tl_snippet_template']['deleteBlocked'], $name, $usages));
+        Message::addError(sprintf($GLOBALS['TL_LANG']['tl_modularis_template']['deleteBlocked'], $name, $usages));
 
         Controller::redirect(Controller::addToUrl('', true, ['act', 'id']));
     }
@@ -111,15 +111,15 @@ class SnippetTemplateListener
     private function countUsages(int $templateId): int
     {
         return (int) $this->connection->fetchOne(
-            "SELECT COUNT(*) FROM tl_content WHERE type = 'snippet_element' AND snippetTemplate = ?",
+            "SELECT COUNT(*) FROM tl_content WHERE type = 'modularis_element' AND modularisTemplate = ?",
             [$templateId],
         );
     }
 
-    #[AsCallback('tl_snippet_template', 'fields.syntaxHelp.input_field')]
+    #[AsCallback('tl_modularis_template', 'fields.syntaxHelp.input_field')]
     public function renderSyntaxHelp(DataContainer $dc): string
     {
-        $lang = $GLOBALS['TL_LANG']['tl_snippet_template']['syntax'] ?? [];
+        $lang = $GLOBALS['TL_LANG']['tl_modularis_template']['syntax'] ?? [];
         $structure = $lang['structure'] ?? [];
 
         return sprintf(

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Futura\ContaoDynamicSnippets\Controller\ContentElement;
+namespace Futura\ContaoModularisBuilder\Controller\ContentElement;
 
 use Contao\ContentModel;
 use Contao\CoreBundle\Controller\ContentElement\AbstractContentElementController;
@@ -14,16 +14,16 @@ use Contao\CoreBundle\Twig\FragmentTemplate;
 use Contao\StringUtil;
 use Contao\Validator;
 use Doctrine\DBAL\Connection;
-use Futura\ContaoDynamicSnippets\Snippet\Placeholder;
-use Futura\ContaoDynamicSnippets\Snippet\SnippetParser;
+use Futura\ContaoModularisBuilder\Snippet\Placeholder;
+use Futura\ContaoModularisBuilder\Snippet\SnippetParser;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
-#[AsContentElement(type: 'snippet_element', category: 'includes', template: 'content_element/snippet_element')]
+#[AsContentElement(type: 'modularis_element', category: 'includes', template: 'content_element/modularis_element')]
 class SnippetElementController extends AbstractContentElementController
 {
-    public const TYPE = 'snippet_element';
+    public const TYPE = 'modularis_element';
 
     public function __construct(
         private readonly Connection $connection,
@@ -37,15 +37,15 @@ class SnippetElementController extends AbstractContentElementController
     protected function getResponse(FragmentTemplate $template, ContentModel $model, Request $request): Response
     {
         $snippet = $this->connection->fetchAssociative(
-            'SELECT id, name, alias, html, imgSize FROM tl_snippet_template WHERE id = ?',
-            [(int) $model->snippetTemplate],
+            'SELECT id, name, alias, html, imgSize FROM tl_modularis_template WHERE id = ?',
+            [(int) $model->modularisTemplate],
         );
 
         if (!$snippet) {
             return new Response();
         }
 
-        $data = json_decode((string) $model->snippetData, true);
+        $data = json_decode((string) $model->modularisData, true);
         $data = \is_array($data) ? $data : [];
 
         $rendered = [];
@@ -71,7 +71,7 @@ class SnippetElementController extends AbstractContentElementController
         ]);
         $template->set('values', $data);
 
-        $this->tagResponse(['contao.db.tl_snippet_template.'.$snippet['id']]);
+        $this->tagResponse(['contao.db.tl_modularis_template.'.$snippet['id']]);
 
         return $template->getResponse();
     }

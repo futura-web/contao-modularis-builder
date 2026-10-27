@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Futura\ContaoDynamicSnippets\EventListener\DataContainer;
+namespace Futura\ContaoModularisBuilder\EventListener\DataContainer;
 
 use Contao\CoreBundle\DataContainer\PaletteManipulator;
 use Contao\CoreBundle\DependencyInjection\Attribute\AsCallback;
@@ -11,18 +11,18 @@ use Contao\Input;
 use Contao\StringUtil;
 use Contao\Validator;
 use Doctrine\DBAL\Connection;
-use Futura\ContaoDynamicSnippets\Snippet\FieldDefinitionFactory;
-use Futura\ContaoDynamicSnippets\Snippet\Placeholder;
-use Futura\ContaoDynamicSnippets\Snippet\SnippetParser;
+use Futura\ContaoModularisBuilder\Snippet\FieldDefinitionFactory;
+use Futura\ContaoModularisBuilder\Snippet\Placeholder;
+use Futura\ContaoModularisBuilder\Snippet\SnippetParser;
 
 /**
- * Registriert für das Inhaltselement "snippet_element" die Felder der gewählten
+ * Registriert für das Inhaltselement "modularis_element" die Felder der gewählten
  * Vorlage dynamisch im DCA und speichert deren Werte gesammelt als JSON in
- * tl_content.snippetData.
+ * tl_content.modularisData.
  */
 class ContentElementListener
 {
-    public const TYPE = 'snippet_element';
+    public const TYPE = 'modularis_element';
 
     /** @var array<int, array<string, string>> Geladene JSON-Daten je Datensatz-ID */
     private array $data = [];
@@ -50,7 +50,7 @@ class ContentElementListener
         $id = (int) $dc->id;
 
         $row = $this->connection->fetchAssociative(
-            'SELECT type, snippetTemplate FROM tl_content WHERE id = ?',
+            'SELECT type, modularisTemplate FROM tl_content WHERE id = ?',
             [$id],
         );
 
@@ -58,11 +58,11 @@ class ContentElementListener
             return;
         }
 
-        $templateId = (int) $row['snippetTemplate'];
+        $templateId = (int) $row['modularisTemplate'];
 
         // Bei submitOnChange die gerade gewählte Vorlage bevorzugen
-        if ('tl_content' === Input::post('FORM_SUBMIT') && null !== Input::post('snippetTemplate')) {
-            $posted = (int) Input::post('snippetTemplate');
+        if ('tl_content' === Input::post('FORM_SUBMIT') && null !== Input::post('modularisTemplate')) {
+            $posted = (int) Input::post('modularisTemplate');
 
             if ($posted !== $templateId) {
                 $this->templateSwitched[$id] = true;
@@ -75,7 +75,7 @@ class ContentElementListener
         }
 
         $template = $this->connection->fetchAssociative(
-            'SELECT html, imgSize FROM tl_snippet_template WHERE id = ?',
+            'SELECT html, imgSize FROM tl_modularis_template WHERE id = ?',
             [$templateId],
         );
 
@@ -127,7 +127,7 @@ class ContentElementListener
 
         $this->connection->update(
             'tl_content',
-            ['snippetData' => json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)],
+            ['modularisData' => json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)],
             ['id' => $id],
         );
 
@@ -192,7 +192,7 @@ class ContentElementListener
     private function loadData(int $id): array
     {
         if (!isset($this->data[$id])) {
-            $json = $this->connection->fetchOne('SELECT snippetData FROM tl_content WHERE id = ?', [$id]);
+            $json = $this->connection->fetchOne('SELECT modularisData FROM tl_content WHERE id = ?', [$id]);
             $decoded = json_decode((string) $json, true);
 
             $this->data[$id] = \is_array($decoded) ? $decoded : [];

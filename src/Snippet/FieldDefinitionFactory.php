@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Futura\ContaoDynamicSnippets\Snippet;
+namespace Futura\ContaoModularisBuilder\Snippet;
 
 use Contao\BackendUser;
 use Contao\System;

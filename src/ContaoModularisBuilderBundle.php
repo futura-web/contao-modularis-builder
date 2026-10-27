@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Futura\ContaoDynamicSnippets;
+namespace Futura\ContaoModularisBuilder;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class ContaoDynamicSnippetsBundle extends Bundle
+class ContaoModularisBuilderBundle extends Bundle
 {
     public function getPath(): string
     {

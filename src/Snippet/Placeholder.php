@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Futura\ContaoDynamicSnippets\Snippet;
+namespace Futura\ContaoModularisBuilder\Snippet;
 
 /**
  * Ein Platzhalter im Snippet-HTML, z. B. [[image:bild|Bild]].
@@ -11,7 +11,7 @@ final class Placeholder
 {
     public const TYPES = ['text', 'textarea', 'html', 'rte', 'image', 'url', 'select', 'checkbox', 'number'];
 
-    public const FIELD_PREFIX = 'snippet_';
+    public const FIELD_PREFIX = 'modularis_';
 
     /**
      * @param array<string, string>        $options   Schlüssel => Label (nur für select)

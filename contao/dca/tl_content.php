@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-$GLOBALS['TL_DCA']['tl_content']['palettes']['snippet_element'] = '{type_legend},type,headline;{snippet_legend},snippetTemplate;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},cssID;{invisible_legend:hide},invisible,start,stop';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['modularis_element'] = '{type_legend},type,headline;{snippet_legend},modularisTemplate;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},cssID;{invisible_legend:hide},invisible,start,stop';
 
-$GLOBALS['TL_DCA']['tl_content']['fields']['snippetTemplate'] = [
+$GLOBALS['TL_DCA']['tl_content']['fields']['modularisTemplate'] = [
     'exclude' => true,
     'inputType' => 'select',
-    'foreignKey' => 'tl_snippet_template.name',
+    'foreignKey' => 'tl_modularis_template.name',
     'eval' => [
         'mandatory' => true,
         'includeBlankOption' => true,
@@ -20,6 +20,6 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['snippetTemplate'] = [
 ];
 
 // Werte der dynamischen Felder, als JSON
-$GLOBALS['TL_DCA']['tl_content']['fields']['snippetData'] = [
+$GLOBALS['TL_DCA']['tl_content']['fields']['modularisData'] = [
     'sql' => 'mediumtext NULL',
 ];

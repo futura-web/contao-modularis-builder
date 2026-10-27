@@ -1,6 +1,6 @@
 <img src="futura-logo.svg" alt="Futura Web" width="220">
 
-# Contao Dynamic Snippets
+# Contao Modularis Builder
 
 Wiederverwendbare HTML-Snippets mit Platzhaltern als Inhaltselemente für **Contao 5**.
 
@@ -18,38 +18,38 @@ In der `composer.json` der Contao-Installation ein VCS-Repository eintragen:
 
 ```json
 "repositories": [
-    { "type": "vcs", "url": "https://github.com/futura-web/contao-dynamic-snippets" }
+    { "type": "vcs", "url": "https://github.com/futura-web/contao-modularis-builder" }
 ]
 ```
 
 ```bash
-composer require futura/contao-dynamic-snippets
+composer require futura/contao-modularis-builder
 vendor/bin/contao-console contao:migrate
 vendor/bin/contao-console cache:clear
 ```
 
 ### Als lokales Paket
 
-Für die Entwicklung am Bundle selbst, z. B. in `packages/contao-dynamic-snippets` der Contao-Installation:
+Für die Entwicklung am Bundle selbst, z. B. in `packages/contao-modularis-builder` der Contao-Installation:
 
 ```json
 "repositories": [
-    { "type": "path", "url": "packages/contao-dynamic-snippets" }
+    { "type": "path", "url": "packages/contao-modularis-builder" }
 ]
 ```
 
 ```bash
-composer require futura/contao-dynamic-snippets:@dev
+composer require futura/contao-modularis-builder:@dev
 vendor/bin/contao-console contao:migrate
 vendor/bin/contao-console cache:clear
 ```
 
 ## Benutzung
 
-1. Backend → **Inhalte → Snippet-Vorlagen** → neue Vorlage anlegen.
+1. Backend → **Inhalte → Modularis** → neue Vorlage anlegen.
 2. Einen sprechenden **Namen** vergeben, z. B. "Teaser-Kachel" oder "YouTube-Embed". Unter diesem Namen erscheint die Vorlage später in der Auswahl. Optional eine Beschreibung als Notiz für Redakteure ergänzen.
 3. HTML einfügen und Platzhalter setzen.
-4. Im Artikel ein Inhaltselement vom Typ **Snippet-Element** anlegen, im Dropdown die Vorlage nach Namen wählen, Felder befüllen.
+4. Im Artikel ein Inhaltselement vom Typ **Modularis-Element** anlegen, im Dropdown die Vorlage nach Namen wählen, Felder befüllen.
 
 ### Platzhalter-Syntax
 
@@ -159,18 +159,18 @@ Hat eine Vorlage mehrere Bilder mit unterschiedlichen Anforderungen, etwa ein gr
 | `12` | Verweist auf eine bestehende, im Contao-Backend angelegte Bildgröße mit der ID 12 |
 | `800x600_box,lightbox` | Zusätzlich `lightbox` angeben: Lightbox ist vorausgewählt, lässt sich aber im Inhaltselement wieder abwählen |
 
-Das Twig-Template `content_element/snippet_element.html.twig` kann wie üblich überschrieben werden. Verfügbare Variablen: `html` (fertiges Snippet), `snippet` (`id`, `name`, `alias`) und `values` (Rohwerte).
+Das Twig-Template `content_element/modularis_element.html.twig` kann wie üblich überschrieben werden. Verfügbare Variablen: `html` (fertiges Snippet), `snippet` (`id`, `name`, `alias`) und `values` (Rohwerte).
 
 ## Rechte
 
-Das Backend-Modul **Snippet-Vorlagen** wird über die Benutzergruppen freigegeben. Da Vorlagen beliebiges HTML enthalten, sollte nur Admins oder vertrauenswürdigen Gruppen Zugriff gegeben werden. Redakteure benötigen nur Zugriff auf das Inhaltselement.
+Das Backend-Modul **Modularis** wird über die Benutzergruppen freigegeben. Da Vorlagen beliebiges HTML enthalten, sollte nur Admins oder vertrauenswürdigen Gruppen Zugriff gegeben werden. Redakteure benötigen nur Zugriff auf das Inhaltselement.
 
 ## Technik
 
-- Vorlagen liegen in `tl_snippet_template`.
-- Das Inhaltselement speichert die Vorlagen-ID in `tl_content.snippetTemplate` und alle Feldwerte als JSON in `tl_content.snippetData`. Neue Platzhalter erfordern deshalb keine Datenbankmigration.
+- Vorlagen liegen in `tl_modularis_template`.
+- Das Inhaltselement speichert die Vorlagen-ID in `tl_content.modularisTemplate` und alle Feldwerte als JSON in `tl_content.modularisData`. Neue Platzhalter erfordern deshalb keine Datenbankmigration.
 - Die Felder werden im `config.onload` von `tl_content` dynamisch registriert und per `PaletteManipulator` eingehängt.
-- Die Frontend-Ausgabe wird mit `contao.db.tl_snippet_template.<id>` getaggt, damit der HTTP-Cache bei Änderungen an der Vorlage invalidiert wird.
+- Die Frontend-Ausgabe wird mit `contao.db.tl_modularis_template.<id>` getaggt, damit der HTTP-Cache bei Änderungen an der Vorlage invalidiert wird.
 
 ## Löschschutz
 
