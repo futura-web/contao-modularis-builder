@@ -23,7 +23,7 @@ In der `composer.json` der Contao-Installation ein VCS-Repository eintragen:
 ```
 
 ```bash
-composer require futura/contao-modularis-builder
+composer require futuraweb/contao-modularis-builder
 vendor/bin/contao-console contao:migrate
 vendor/bin/contao-console cache:clear
 ```
@@ -39,7 +39,7 @@ Für die Entwicklung am Bundle selbst, z. B. in `packages/contao-modularis-build
 ```
 
 ```bash
-composer require futura/contao-modularis-builder:@dev
+composer require futuraweb/contao-modularis-builder:@dev
 vendor/bin/contao-console contao:migrate
 vendor/bin/contao-console cache:clear
 ```

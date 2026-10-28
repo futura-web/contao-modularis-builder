@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Futura\ContaoModularisBuilder\Snippet;
+namespace Futuraweb\ContaoModularisBuilder\Snippet;
 
 /**
  * Ein Platzhalter im Snippet-HTML, z. B. [[image:bild|Bild]].

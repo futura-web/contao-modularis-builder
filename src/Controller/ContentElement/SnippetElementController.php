@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Futura\ContaoModularisBuilder\Controller\ContentElement;
+namespace Futuraweb\ContaoModularisBuilder\Controller\ContentElement;
 
 use Contao\ContentModel;
 use Contao\CoreBundle\Controller\ContentElement\AbstractContentElementController;
@@ -14,8 +14,8 @@ use Contao\CoreBundle\Twig\FragmentTemplate;
 use Contao\StringUtil;
 use Contao\Validator;
 use Doctrine\DBAL\Connection;
-use Futura\ContaoModularisBuilder\Snippet\Placeholder;
-use Futura\ContaoModularisBuilder\Snippet\SnippetParser;
+use Futuraweb\ContaoModularisBuilder\Snippet\Placeholder;
+use Futuraweb\ContaoModularisBuilder\Snippet\SnippetParser;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;

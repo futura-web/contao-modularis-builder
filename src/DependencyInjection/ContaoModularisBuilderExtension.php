@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Futura\ContaoModularisBuilder\DependencyInjection;
+namespace Futuraweb\ContaoModularisBuilder\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

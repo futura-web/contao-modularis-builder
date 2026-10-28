@@ -4,7 +4,7 @@ services:
         autoconfigure: true
         public: false
 
-    Futura\ContaoModularisBuilder\:
+    Futuraweb\ContaoModularisBuilder\:
         resource: ../src/
         exclude:
             - ../src/ContaoManager/

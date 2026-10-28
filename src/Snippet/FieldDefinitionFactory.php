@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Futura\ContaoModularisBuilder\Snippet;
+namespace Futuraweb\ContaoModularisBuilder\Snippet;
 
 use Contao\BackendUser;
 use Contao\System;

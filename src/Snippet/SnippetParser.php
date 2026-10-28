@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Futura\ContaoModularisBuilder\Snippet;
+namespace Futuraweb\ContaoModularisBuilder\Snippet;
 
 /**
  * Erkennt Platzhalter im Snippet-HTML und ersetzt sie beim Rendern.

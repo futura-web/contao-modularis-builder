@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Futura\ContaoModularisBuilder\EventListener\DataContainer;
+namespace Futuraweb\ContaoModularisBuilder\EventListener\DataContainer;
 
 use Contao\CoreBundle\DataContainer\PaletteManipulator;
 use Contao\CoreBundle\DependencyInjection\Attribute\AsCallback;
@@ -11,9 +11,9 @@ use Contao\Input;
 use Contao\StringUtil;
 use Contao\Validator;
 use Doctrine\DBAL\Connection;
-use Futura\ContaoModularisBuilder\Snippet\FieldDefinitionFactory;
-use Futura\ContaoModularisBuilder\Snippet\Placeholder;
-use Futura\ContaoModularisBuilder\Snippet\SnippetParser;
+use Futuraweb\ContaoModularisBuilder\Snippet\FieldDefinitionFactory;
+use Futuraweb\ContaoModularisBuilder\Snippet\Placeholder;
+use Futuraweb\ContaoModularisBuilder\Snippet\SnippetParser;
 
 /**
  * Registriert für das Inhaltselement "modularis_element" die Felder der gewählten

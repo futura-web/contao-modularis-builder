@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Futura\ContaoModularisBuilder;
+namespace Futuraweb\ContaoModularisBuilder;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

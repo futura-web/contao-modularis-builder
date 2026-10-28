@@ -1,5 +1,5 @@
 {
-    "name": "futura/contao-modularis-builder",
+    "name": "futuraweb/contao-modularis-builder",
     "type": "contao-bundle",
     "description": "HTML-Snippets mit Platzhaltern als wiederverwendbare Inhaltselemente für Contao 5 – ohne eigene Modulprogrammierung",
     "keywords": [
@@ -44,11 +44,11 @@
     },
     "autoload": {
         "psr-4": {
-            "Futura\\ContaoModularisBuilder\\": "src/"
+            "Futuraweb\\ContaoModularisBuilder\\": "src/"
         }
     },
     "extra": {
-        "contao-manager-plugin": "Futura\\ContaoModularisBuilder\\ContaoManager\\Plugin"
+        "contao-manager-plugin": "Futuraweb\\ContaoModularisBuilder\\ContaoManager\\Plugin"
     },
     "config": {
         "allow-plugins": {

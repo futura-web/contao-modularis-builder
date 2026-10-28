@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Futura\ContaoModularisBuilder\EventListener\DataContainer;
+namespace Futuraweb\ContaoModularisBuilder\EventListener\DataContainer;
 
 use Contao\CoreBundle\DependencyInjection\Attribute\AsCallback;
 use Contao\CoreBundle\Slug\Slug;
@@ -13,8 +13,8 @@ use Contao\Input;
 use Contao\Message;
 use Contao\StringUtil;
 use Doctrine\DBAL\Connection;
-use Futura\ContaoModularisBuilder\Snippet\Placeholder;
-use Futura\ContaoModularisBuilder\Snippet\SnippetParser;
+use Futuraweb\ContaoModularisBuilder\Snippet\Placeholder;
+use Futuraweb\ContaoModularisBuilder\Snippet\SnippetParser;
 
 class ModularisTemplateListener
 {
