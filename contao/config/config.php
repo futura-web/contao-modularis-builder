@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 use Contao\ArrayUtil;
 
-// Backend-Modul "Modularis" unter "Layout" direkt vor "Templates" einhängen
+// Backend-Modul "Modularis" unter "Layout" direkt nach "Templates" einhängen
 $modularisPosition = array_search('tpl_editor', array_keys($GLOBALS['BE_MOD']['design']), true);
 
 ArrayUtil::arrayInsert(
     $GLOBALS['BE_MOD']['design'],
-    false !== $modularisPosition ? $modularisPosition : \count($GLOBALS['BE_MOD']['design']),
+    false !== $modularisPosition ? $modularisPosition + 1 : \count($GLOBALS['BE_MOD']['design']),
     [
         'modularis_templates' => [
             'tables' => ['tl_modularis_template'],
