@@ -48,7 +48,8 @@
         }
     },
     "extra": {
-        "contao-manager-plugin": "Futuraweb\\ContaoModularisBuilder\\ContaoManager\\Plugin"
+        "contao-manager-plugin": "Futuraweb\\ContaoModularisBuilder\\ContaoManager\\Plugin",
+        "contao-metadata-url": "https://raw.githubusercontent.com/futura-web/contao-modularis-builder/main/metadata.json"
     },
     "config": {
         "allow-plugins": {
